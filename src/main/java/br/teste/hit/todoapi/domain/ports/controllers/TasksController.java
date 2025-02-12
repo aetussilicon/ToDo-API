@@ -24,6 +24,6 @@ public interface TasksController {
     ResponseEntity<List<UserTaskDto>> listTasks();
 
     @PatchMapping("{id}/complete")
-    ResponseEntity<Void> completeTask(@PathVariable String id);
+    HttpStatus completeTask(@PathVariable String id);
 
 }

@@ -40,7 +40,8 @@ public class TasksControllerImpl implements TasksController {
     }
 
     @Override
-    public ResponseEntity<Void> completeTask(String id) {
-        return null;
+    public HttpStatus completeTask(String id) {
+        services.setTaskComplete(id);
+        return HttpStatus.OK;
     }
 }

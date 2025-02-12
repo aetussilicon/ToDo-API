@@ -14,6 +14,6 @@ public interface TasksServices {
     List<UserTaskDto> listAllTasks();
     List<UserTaskDto> listAllTasksByStatus(TaskStatus status);
     List<UserTaskDto> listAllTasksByPriorityLevel(TaskPriorityLevel priorityLevel);
-    void changeCompletionStatus(boolean completed);
+    void setTaskComplete(String id);
     void deleteTask(String id);
 }

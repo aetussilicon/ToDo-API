@@ -57,7 +57,10 @@ public class TasksServicesImpl implements TasksServices {
     }
 
     @Override
-    public void changeCompletionStatus(boolean completed) {
+    public void setTaskComplete(String id) {
+        UserTask task = repository.findById(Long.valueOf(id)).orElseThrow(RuntimeException::new);
+        task.setStatus(TaskStatus.DONE);
+        repository.save(task);
     }
 
     @Override
