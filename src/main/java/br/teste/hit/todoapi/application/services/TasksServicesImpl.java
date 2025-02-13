@@ -8,6 +8,7 @@ import br.teste.hit.todoapi.domain.models.enums.TaskStatus;
 import br.teste.hit.todoapi.domain.ports.mappers.UserTaskMapper;
 import br.teste.hit.todoapi.domain.ports.repositories.UserTaskRepository;
 import br.teste.hit.todoapi.domain.ports.services.TasksServices;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,7 @@ public class TasksServicesImpl implements TasksServices {
     }
 
     @Override
+    @Transactional
     public UserTaskDto updateTask(String id, CreateUpdateTaskDto updateDto) {
         UserTask taskToUpdate = repository.findById(Long.valueOf(id)).orElseThrow(RuntimeException::new);
         taskToUpdate = userTaskMapper.partialUpdate(updateDto, taskToUpdate);
@@ -64,6 +66,7 @@ public class TasksServicesImpl implements TasksServices {
     }
 
     @Override
+    @Transactional
     public void deleteTask(String id) {
         UserTask taskToDelete = repository.findById(Long.valueOf(id)).orElseThrow(RuntimeException::new);
         repository.deleteById(taskToDelete.getTaskId());
