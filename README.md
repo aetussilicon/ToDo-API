@@ -115,7 +115,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - DB_HOST=localhost
+      - DB_HOST=postgres
       - DB_PORT=5432
       - DB_NAME=todoapi_db
       - DB_SCHEMA=public
