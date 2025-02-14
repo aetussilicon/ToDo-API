@@ -7,11 +7,7 @@ Uma API RESTful para gerenciamento de tarefas, com testes automatizados, monitor
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Configuração do Projeto](#configuração-do-projeto)
     - [Variáveis de Ambiente](#variáveis-de-ambiente)
-    - [Exemplo de Configuração (application.yaml)](#exemplo-de-configuração-applicationyaml)
 - [Como Executar](#como-executar)
-    - [Via Gradle](#via-gradle)
-    - [Documentação Swagger](#documentação-swagger)
-    - [Monitoramento com Actuator](#monitoramento-com-actuator)
 - [Testes](#testes)
 - [Docker](#docker)
     - [Dockerfile (Multi-Stage)](#dockerfile-multi-stage)
@@ -42,7 +38,7 @@ O projeto tem as seguintes variáveis de ambiente:
 
 Podem ser configuradas com um arquivo .env, na sua IDE ou dentro do arquivo de `docker-compose.yml`
 
-## Como excutar
+## Como Executar
 
 1. Clone o repositório
 
@@ -63,7 +59,7 @@ cd todoapi
 
  A API ficará disponível em http://localhost:8080
 
-4. Acessando a Documentação Swagger
+4. Documentação Swagger
 
 A documentação estará disponível em:
 
@@ -144,7 +140,7 @@ volumes:
   pgdata:
 ```
 
-## Como Rodar com o Docker
+## Como Rodar com Docker
 
 Na raiz do projeto, execute:
 
