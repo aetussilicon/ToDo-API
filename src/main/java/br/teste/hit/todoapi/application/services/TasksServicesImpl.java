@@ -1,6 +1,7 @@
 package br.teste.hit.todoapi.application.services;
 
 import br.teste.hit.todoapi.domain.models.dtos.CreateUpdateTaskDto;
+import br.teste.hit.todoapi.domain.models.dtos.TaskStatisticDto;
 import br.teste.hit.todoapi.domain.models.entities.UserTask;
 import br.teste.hit.todoapi.domain.models.entities.UserTaskDto;
 import br.teste.hit.todoapi.domain.models.enums.TaskPriorityLevel;
@@ -70,5 +71,13 @@ public class TasksServicesImpl implements TasksServices {
     public void deleteTask(String id) {
         UserTask taskToDelete = repository.findById(Long.valueOf(id)).orElseThrow(RuntimeException::new);
         repository.deleteById(taskToDelete.getTaskId());
+    }
+
+    @Override
+    public TaskStatisticDto getStatistics() {
+        long total = repository.count();
+        long completed = repository.countByStatus(TaskStatus.DONE);
+        double percentage = total > 0 ? ((double) completed / total) * 100 : 0;
+        return new TaskStatisticDto(total, completed, percentage);
     }
 }

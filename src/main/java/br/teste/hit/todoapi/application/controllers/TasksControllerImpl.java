@@ -1,6 +1,7 @@
 package br.teste.hit.todoapi.application.controllers;
 
 import br.teste.hit.todoapi.domain.models.dtos.CreateUpdateTaskDto;
+import br.teste.hit.todoapi.domain.models.dtos.TaskStatisticDto;
 import br.teste.hit.todoapi.domain.models.entities.UserTaskDto;
 import br.teste.hit.todoapi.domain.ports.controllers.TasksController;
 import br.teste.hit.todoapi.domain.ports.services.TasksServices;
@@ -43,5 +44,10 @@ public class TasksControllerImpl implements TasksController {
     public HttpStatus completeTask(String id) {
         services.setTaskComplete(id);
         return HttpStatus.OK;
+    }
+
+    @Override
+    public ResponseEntity<TaskStatisticDto> getStatistics() {
+        return new ResponseEntity<>(services.getStatistics(), HttpStatus.OK);
     }
 }
